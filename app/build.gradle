@@ -12,7 +12,7 @@ android {
 
   defaultConfig {
     applicationId "org.appspot.apprtc"
-    minSdkVersion 16
+    minSdkVersion 19
     targetSdkVersion 22
 
     versionCode 11835
@@ -32,9 +32,30 @@ android {
   lintOptions {
     abortOnError false
   }
+
+  packagingOptions {
+    exclude 'META-INF/DEPENDENCIES.txt'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/NOTICE.txt'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/notice.txt'
+    exclude 'META-INF/license.txt'
+    exclude 'META-INF/dependencies.txt'
+    exclude 'META-INF/LGPL2.1'
+  }
 }
 
 dependencies {
   compile files('libs/autobanh.jar')
   compile files('libs/libjingle_peerconnection.jar')
+  // --- jsr305 replacement which adds annotations missing on Android
+  compile group: 'org.glassfish', name: 'javax.annotation', version:'3.1.1'
+  // --=[ compile-time lang sugar annotations ]=--
+  provided group: 'org.projectlombok', name: 'lombok', version:'1.16.2'
+  // --=[ common functions and lang flaws sugar ]=--
+  compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.1'
+  compile group: 'commons-io', name: 'commons-io', version:'2.4'
+  compile group: 'com.google.guava', name: 'guava', version:'16.0'
 }

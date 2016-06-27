@@ -151,7 +151,7 @@ public class PeerConnectionClient {
         String videoCodec, boolean videoCodecHwAcceleration, boolean captureToTexture,
         int audioStartBitrate, String audioCodec,
         boolean noAudioProcessing, boolean aecDump, boolean useOpenSLES) {
-      this.videoCallEnabled = videoCallEnabled;
+      this.videoCallEnabled = false;
       this.loopback = loopback;
       this.tracing = tracing;
       this.videoWidth = videoWidth;
